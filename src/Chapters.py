@@ -214,11 +214,12 @@ class WuxiaWorldChapter(Chapter):
         return chapter_content
 
     def getContent2(self,html):
-        chapter_content= extractId(html,self.contentDiv)
+        chapter_content= self.extractId(html,self.contentDiv)
         self.setContent(chapter_content)
         return chapter_content
         
-    def extractId(html,idDiv):
+    def extractId(self,html,idDiv):
+        from bs4 import BeautifulSoup
         soup = BeautifulSoup(html,features="html5lib")
         chapter_content=""
         for line in soup.find_all(id=idDiv):
@@ -226,6 +227,8 @@ class WuxiaWorldChapter(Chapter):
         return chapter_content
 
     def extractClass(html,classDiv):
+        'TODO'
+        pass
 
     def extractDiv(html,div):
         from bs4 import BeautifulSoup

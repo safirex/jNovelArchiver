@@ -22,7 +22,7 @@ class Novel:
         pass
 
 
-    #instanciate an object depending of the code
+    #instantiate an object depending of the code
     def updateObject(self):
         if(len(self.code)>7 and self.code.find('n18n')==0):
             return N18SyosetuNovel(self)
@@ -74,6 +74,7 @@ class SyosetuNovel(Novel):
         rep=requests.get(url,headers=headers)
         rep.encoding='utf-8'
         html=rep.text
+        
         if(self.getLastChapter()==0):
             self.processTocResume(html)
 
